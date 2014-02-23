@@ -1,5 +1,5 @@
 #!/bin/bash
-wget -np -P /tmp http://mirror.anthonos.org/google-binaries/google-chrome-stable_current_amd64.deb
+wget -np -nc -c -P /tmp https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 cd /tmp
 dpkg -x google-chrome-stable_current_amd64.deb chrome/
 cd chrome/
