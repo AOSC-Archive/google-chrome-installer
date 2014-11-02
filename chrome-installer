@@ -4,7 +4,7 @@ cd /tmp
 dpkg -x google-chrome-stable_current_amd64.deb chrome/
 cd chrome/
 cp -r * /
-cp /opt/google/chrome/product_logo_256.png /usr/share/pixmap/google-chrome.png
+cp /opt/google/chrome/product_logo_256.png /usr/share/pixmaps/google-chrome.png
 # cp -v /opt/google/chrome/google-chrome.desktop /usr/share/applications/google-chrome.desktop
 chmod 4755 /opt/google/chrome/chrome-sandbox
 # An odd lib dependency...
