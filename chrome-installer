@@ -12,4 +12,4 @@ ln -s /opt/google/chrome/product_logo_256.png /usr/share/pixmaps/google-chrome.p
 chmod 4755 /opt/google/chrome/chrome-sandbox
 
 # An odd lib dependency...
-[ ! -e /usr/lib/libudev.so.0 ] && ln -sv libudev.so /usr/lib/libudev.so.0
+[ ! -e /usr/lib/libudev.so.0 ] && ln -s libudev.so /usr/lib/libudev.so.0
