@@ -1,18 +1,15 @@
-#!/bin/bash
-rm -f /tmp/google-chrome-stable_*.deb*
-wget -np -nc -c -P /tmp https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-cd /tmp
+#!/bin/bash -e
+cd $(mktemp -d)
+
+echo "Downloading Google Chrome (.deb package) ..."
+wget -c https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 dpkg -x google-chrome-stable_current_amd64.deb chrome/
+
+echo "Unpacking Google Chrome ..."
 cd chrome/
-cp -r * /
-cp /opt/google/chrome/product_logo_256.png /usr/share/pixmaps/google-chrome.png
-# cp -v /opt/google/chrome/google-chrome.desktop /usr/share/applications/google-chrome.desktop
+cp -a * /
+ln -s /opt/google/chrome/product_logo_256.png /usr/share/pixmaps/google-chrome.png
 chmod 4755 /opt/google/chrome/chrome-sandbox
+
 # An odd lib dependency...
-if [ -e /usr/lib/libudev.so.0 ]
-then
-  echo "Great, the symlink exists"
-else
-  ln -sv libudev.so /usr/lib/libudev.so.0
-fi
-rm -f /tmp/google-chrome-stable_*.deb*
+[ ! -e /usr/lib/libudev.so.0 ] && ln -sv libudev.so /usr/lib/libudev.so.0
