@@ -14,3 +14,5 @@ chmod 4755 /opt/google/chrome/chrome-sandbox
 
 # An odd lib dependency...
 [ ! -e /usr/lib/libudev.so.0 ] && ln -s libudev.so /usr/lib/libudev.so.0
+
+rm -f /etc/cron.daily/google-chrome
