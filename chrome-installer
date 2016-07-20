@@ -19,9 +19,9 @@ if [ ! -e /usr/lib/libudev.so.0 ]; then
 fi
 
 # PepperFlash on Chromium.
-if [ ! -d /usr/lib/PepperFlash ]; then
+if [ -d /usr/lib/PepperFlash ]; then
     rm -r /usr/lib/PepperFlash
 fi
-ln -sv /opt/google/chrome/PepperFlash /usr/lib/PepperFlash
+ln -s /opt/google/chrome/PepperFlash /usr/lib/PepperFlash
 
 rm -f /etc/cron.daily/google-chrome
