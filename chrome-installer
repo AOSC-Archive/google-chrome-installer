@@ -8,11 +8,20 @@ dpkg -x google-chrome-stable_current_amd64.deb chrome/
 echo "Unpacking Google Chrome ..."
 cd chrome/
 cp -a * /
-[ ! -e /usr/share/pixmaps/google-chrome.png ] && \
+if [ ! -e /usr/share/pixmaps/google-chrome.png ]; then
     ln -s /opt/google/chrome/product_logo_256.png /usr/share/pixmaps/google-chrome.png
+fi
 chmod 4755 /opt/google/chrome/chrome-sandbox
 
 # An odd lib dependency...
-[ ! -e /usr/lib/libudev.so.0 ] && ln -s libudev.so /usr/lib/libudev.so.0
+if [ ! -e /usr/lib/libudev.so.0 ]; then
+    ln -s libudev.so /usr/lib/libudev.so.0
+fi
+
+# PepperFlash on Chromium.
+if [ ! -d /usr/lib/PepperFlash ]; then
+    rm -r /usr/lib/PepperFlash
+fi
+ln -sv /opt/google/chrome/PepperFlash /usr/lib/PepperFlash
 
 rm -f /etc/cron.daily/google-chrome
